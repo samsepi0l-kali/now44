@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply bg-black text-white;
+    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Clean Hindi font */
+  h1, h2, h3, p, .hindi-text {
+    font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-red-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-700;
+}
+
+/* Mobile touch optimizations */
+@media (max-width: 640px) {
+  button {
+    @apply active:scale-95 transition-transform duration-150;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better font rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
