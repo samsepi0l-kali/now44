@@ -10,11 +10,11 @@ export default function SpacerSection() {
         viewport={{ once: true }}
         className="text-center"
       >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white/50 font-hindi">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white/30">
           अगला सेक्शन
         </h2>
-        <p className="text-gray-600 mt-4 text-lg font-hindi">
-          माइक्रोफोन ऊपर चला गया, अब अगले सेक्शन में आपका स्वागत है
+        <p className="text-gray-600 mt-4 text-lg">
+          यहाँ कुछ नया आ रहा है...
         </p>
       </motion.div>
     </section>

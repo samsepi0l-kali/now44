@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Preloader from './components/Preloader'
 import HeroSection from './components/HeroSection'
 import ScrollSection from './components/ScrollSection'
-import YouTubeReplica from './components/YouTubeReplica'
+import YouTubeSection from './components/YouTubeSection'
 import SpacerSection from './components/SpacerSection'
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <main>
         <HeroSection />
         <ScrollSection />
-        <YouTubeReplica />
+        <YouTubeSection />
         <SpacerSection />
       </main>
     </div>

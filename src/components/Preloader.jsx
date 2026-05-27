@@ -44,7 +44,6 @@ export default function Preloader({ onComplete }) {
     }
   }, [step, onComplete]);
 
-  // Get logo path based on environment
   const logoSrc = import.meta.env.BASE_URL + 'logo.png'
 
   return (
@@ -66,7 +65,7 @@ export default function Preloader({ onComplete }) {
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   className="text-center"
                 >
-                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black tracking-tight font-hindi">
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black tracking-tight">
                     {messages[currentIndex].text}
                   </h2>
                 </motion.div>
@@ -92,7 +91,7 @@ export default function Preloader({ onComplete }) {
                 transition={{ delay: 0.2, duration: 0.3 }}
                 className="-mt-2 text-center"
               >
-                <span className="text-black text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.3em] uppercase font-bold font-hindi">
+                <span className="text-black text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.3em] uppercase font-bold">
                   NEWS CHANNEL
                 </span>
               </motion.div>

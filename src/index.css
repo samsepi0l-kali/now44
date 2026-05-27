@@ -16,13 +16,11 @@
     overflow-x: hidden;
   }
   
-  /* Clean Hindi font */
-  h1, h2, h3, p, .hindi-text {
+  h1, h2, h3, p {
     font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -39,19 +37,16 @@
   @apply bg-red-700;
 }
 
-/* Mobile touch optimizations */
 @media (max-width: 640px) {
   button {
     @apply active:scale-95 transition-transform duration-150;
   }
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Better font rendering */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

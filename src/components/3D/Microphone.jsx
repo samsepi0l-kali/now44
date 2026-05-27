@@ -1,37 +1,45 @@
-import React, { useRef } from 'react'
-import { useFrame, useLoader } from '@react-three/fiber'
+import React, { useRef, useState, useEffect } from 'react'
+import { useFrame } from '@react-three/fiber'
 import { Float, RoundedBox, Decal, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 
 export default function Microphone({ scrollProgress = 0, size = 1 }) {
   const group = useRef()
+  const [logoTexture, setLogoTexture] = useState(null)
 
-  const logoTexture = useLoader(THREE.TextureLoader, '/logo.png')
-
-  logoTexture.anisotropy = 16
-  logoTexture.wrapS = THREE.ClampToEdgeWrapping
-  logoTexture.wrapT = THREE.ClampToEdgeWrapping
+  useEffect(() => {
+    const textureLoader = new THREE.TextureLoader()
+    const logoSrc = import.meta.env.BASE_URL + 'logo.png'
+    textureLoader.load(
+      logoSrc,
+      (texture) => {
+        texture.anisotropy = 16
+        texture.wrapS = THREE.ClampToEdgeWrapping
+        texture.wrapT = THREE.ClampToEdgeWrapping
+        setLogoTexture(texture)
+      },
+      undefined,
+      (error) => {
+        console.error('Error loading logo:', error)
+      }
+    )
+  }, [])
 
   useFrame((state) => {
     if (!group.current) return
 
     let yPosition
-    let scaleValue
     
-    if (scrollProgress < 0.4) {
-      const riseProgress = scrollProgress / 0.4
-      yPosition = -6 + (riseProgress * 6)
-      scaleValue = 0.5 + (riseProgress * 0.6)
-    } else if (scrollProgress < 0.7) {
-      yPosition = 0 - ((scrollProgress - 0.4) * 2)
-      scaleValue = 1.1
+    if (scrollProgress < 0.5) {
+      const riseProgress = scrollProgress / 0.5
+      yPosition = -4 + (riseProgress * 4)
     } else {
-      yPosition = -0.5
-      scaleValue = 1.1
+      const moveProgress = (scrollProgress - 0.5) / 0.5
+      yPosition = 0 + (moveProgress * 5)
     }
     
     group.current.position.y = yPosition
-    group.current.scale.setScalar(scaleValue * size)
+    group.current.scale.setScalar(0.9 * size)
     group.current.rotation.y = state.clock.elapsedTime * 0.15
   })
 
@@ -63,10 +71,14 @@ export default function Microphone({ scrollProgress = 0, size = 1 }) {
           <RoundedBox args={[1.25, 0.72, 1.25]} radius={0.06} smoothness={4} position={[0, -0.2, 0]}>
             <meshPhysicalMaterial color="#0a0a0a" metalness={0.7} roughness={0.3} clearcoat={1} />
 
-            <Decal position={[0, 0, 0.63]} rotation={[0, 0, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
-            <Decal position={[0, 0, -0.63]} rotation={[0, Math.PI, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
-            <Decal position={[-0.63, 0, 0]} rotation={[0, -Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
-            <Decal position={[0.63, 0, 0]} rotation={[0, Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+            {logoTexture && (
+              <>
+                <Decal position={[0, 0, 0.63]} rotation={[0, 0, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+                <Decal position={[0, 0, -0.63]} rotation={[0, Math.PI, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+                <Decal position={[-0.63, 0, 0]} rotation={[0, -Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+                <Decal position={[0.63, 0, 0]} rotation={[0, Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+              </>
+            )}
           </RoundedBox>
         </group>
       </Float>
