@@ -1,29 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { useFrame } from '@react-three/fiber'
+import React, { useRef } from 'react'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { Float, RoundedBox, Decal, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 
 export default function Microphone({ scrollProgress = 0, size = 1 }) {
   const group = useRef()
-  const [logoTexture, setLogoTexture] = useState(null)
 
-  useEffect(() => {
-    const textureLoader = new THREE.TextureLoader()
-    const logoSrc = import.meta.env.BASE_URL + 'logo.png'
-    textureLoader.load(
-      logoSrc,
-      (texture) => {
-        texture.anisotropy = 16
-        texture.wrapS = THREE.ClampToEdgeWrapping
-        texture.wrapT = THREE.ClampToEdgeWrapping
-        setLogoTexture(texture)
-      },
-      undefined,
-      (error) => {
-        console.error('Error loading logo:', error)
-      }
-    )
-  }, [])
+  const logoTexture = useLoader(THREE.TextureLoader, 'logo.png')
+
+  logoTexture.anisotropy = 16
+  logoTexture.wrapS = THREE.ClampToEdgeWrapping
+  logoTexture.wrapT = THREE.ClampToEdgeWrapping
 
   useFrame((state) => {
     if (!group.current) return
@@ -71,14 +58,10 @@ export default function Microphone({ scrollProgress = 0, size = 1 }) {
           <RoundedBox args={[1.25, 0.72, 1.25]} radius={0.06} smoothness={4} position={[0, -0.2, 0]}>
             <meshPhysicalMaterial color="#0a0a0a" metalness={0.7} roughness={0.3} clearcoat={1} />
 
-            {logoTexture && (
-              <>
-                <Decal position={[0, 0, 0.63]} rotation={[0, 0, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
-                <Decal position={[0, 0, -0.63]} rotation={[0, Math.PI, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
-                <Decal position={[-0.63, 0, 0]} rotation={[0, -Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
-                <Decal position={[0.63, 0, 0]} rotation={[0, Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
-              </>
-            )}
+            <Decal position={[0, 0, 0.63]} rotation={[0, 0, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+            <Decal position={[0, 0, -0.63]} rotation={[0, Math.PI, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+            <Decal position={[-0.63, 0, 0]} rotation={[0, -Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
+            <Decal position={[0.63, 0, 0]} rotation={[0, Math.PI / 2, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
           </RoundedBox>
         </group>
       </Float>
