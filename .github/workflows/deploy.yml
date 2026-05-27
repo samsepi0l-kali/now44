@@ -32,8 +32,13 @@ jobs:
       
       - name: Build
         run: npm run build
-        env:
-          NODE_ENV: production
+      
+      - name: Copy assets to dist
+        run: |
+          cp public/logo.png dist/ || echo "logo.png not found"
+          cp public/favicon.svg dist/ || echo "favicon.svg not found"
+          cp public/icons.svg dist/ || echo "icons.svg not found"
+          ls -la dist/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
