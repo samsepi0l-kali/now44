@@ -7,6 +7,7 @@ import Microphone from './3D/Microphone'
 export default function ScrollSection() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200)
+  const [showJoinButton, setShowJoinButton] = useState(false)
   const containerRef = useRef()
 
   useEffect(() => {
@@ -30,6 +31,12 @@ export default function ScrollSection() {
       }
       
       setScrollProgress(progress)
+      
+      if (progress > 0.5) {
+        setShowJoinButton(true)
+      } else {
+        setShowJoinButton(false)
+      }
     }
     
     window.addEventListener('scroll', handleScroll)
@@ -45,20 +52,16 @@ export default function ScrollSection() {
       
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         
-        {/* JOIN US BUTTON */}
-        <div className="fixed right-5 top-7 z-[130]">
-          {scrollProgress > 0.25 && (
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-black hover:bg-gray-100 transition-all duration-300 shadow-lg sm:px-7 sm:py-3.5 sm:text-base cursor-pointer"
-            >
-              Join Us
-            </motion.button>
-          )}
-        </div>
+        {showJoinButton && (
+          <motion.button
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="fixed right-5 top-7 z-[130] inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-black hover:bg-gray-100 transition-all duration-300 shadow-lg sm:right-8 sm:top-9 sm:px-7 sm:py-3.5 sm:text-base md:right-9 md:top-10 lg:right-10 lg:top-8 cursor-pointer"
+          >
+            Join Us
+          </motion.button>
+        )}
         
-        {/* 3D MICROPHONE */}
         <Canvas
           style={{
             position: 'absolute',
@@ -80,17 +83,18 @@ export default function ScrollSection() {
           />
         </Canvas>
         
-        {/* TEXT */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20">
           <div className="text-center px-4 max-w-5xl mx-auto">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-normal tracking-tight leading-tight">
-              <span style={{ color: '#7cb342' }}>आवाज़ उठाए</span>
-              <br />
-              <span className="text-white">हथियार नहीं</span>
-            </h1>
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-normal mt-6 max-w-2xl mx-auto leading-relaxed">
-              आपकी आवाज़ ही है जो कल की तस्वीर बदल सकती है
-            </p>
+            <div style={{ opacity: Math.min(1, scrollProgress * 2) }} className="transition-opacity duration-500">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-medium tracking-tight leading-tight">
+                <span style={{ color: '#7cb342' }}>आवाज़ उठाए</span>
+                <br />
+                <span className="text-white">हथियार नहीं</span>
+              </h1>
+              <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-normal mt-6 max-w-2xl mx-auto leading-relaxed">
+                आपकी आवाज़ ही है जो कल की तस्वीर बदल सकती है
+              </p>
+            </div>
           </div>
         </div>
         

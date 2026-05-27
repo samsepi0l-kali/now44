@@ -6,9 +6,7 @@ import * as THREE from 'three'
 export default function Microphone({ scrollProgress = 0, size = 1 }) {
   const group = useRef()
 
-  // Get logo path based on environment
-  const logoSrc = import.meta.env.BASE_URL + 'logo.png'
-  const logoTexture = useLoader(THREE.TextureLoader, logoSrc)
+  const logoTexture = useLoader(THREE.TextureLoader, '/logo.png')
 
   logoTexture.anisotropy = 16
   logoTexture.wrapS = THREE.ClampToEdgeWrapping

@@ -5,13 +5,4 @@ export default defineConfig({
   plugins: [react()],
   base: '/now44/',
   assetsInclude: ['**/*.glb', '**/*.gltf'],
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      },
-    },
-  },
 })
