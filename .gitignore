@@ -10,7 +10,6 @@ node_modules/
 /coverage/
 
 # Production builds
-/dist
 /dist-ssr/
 /*.local
 /build
@@ -104,7 +103,6 @@ out
 
 # Nuxt.js build output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
