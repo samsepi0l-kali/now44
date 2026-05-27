@@ -44,6 +44,9 @@ export default function Preloader({ onComplete }) {
     }
   }, [step, onComplete]);
 
+  // Get logo path based on environment
+  const logoSrc = import.meta.env.BASE_URL + 'logo.png'
+
   return (
     <AnimatePresence>
       {step !== 3 && (
@@ -79,7 +82,7 @@ export default function Preloader({ onComplete }) {
               transition={{ type: "spring", damping: 15, stiffness: 120, duration: 0.6 }}
             >
               <img 
-                src="./logo.png" 
+                src={logoSrc} 
                 alt="NOW44 Logo" 
                 className="w-80 sm:w-96 md:w-[28rem] lg:w-[32rem] h-auto object-contain"
               />
