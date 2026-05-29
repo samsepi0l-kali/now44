@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getAssetPath } from '../utils/paths';
 
 const messages = [
   { text: "ब्रेकिंग न्यूज़", delay: 0 },
@@ -44,8 +45,7 @@ export default function Preloader({ onComplete }) {
     }
   }, [step, onComplete]);
 
-  const baseUrl = import.meta.env.VITE_BASE_URL
-  const logoSrc = `${baseUrl}logo.png`
+  const logoSrc = getAssetPath('logo.png')
 
   return (
     <AnimatePresence>

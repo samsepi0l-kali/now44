@@ -2,18 +2,14 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Float, RoundedBox, Decal, Environment } from '@react-three/drei'
 import * as THREE from 'three'
+import { getAssetPath } from '../../utils/paths'
 
 export default function Microphone({ scrollProgress = 0, size = 1 }) {
   const group = useRef()
   const [logoTexture, setLogoTexture] = useState(null)
 
   useEffect(() => {
-    // Use environment variable for the correct path
-    const baseUrl = import.meta.env.VITE_BASE_URL
-    const logoPath = `${baseUrl}logo.png`
-    
-    console.log('Loading logo from:', logoPath)
-    
+    const logoPath = getAssetPath('logo.png')
     const loader = new THREE.TextureLoader()
     loader.load(
       logoPath,
@@ -22,11 +18,10 @@ export default function Microphone({ scrollProgress = 0, size = 1 }) {
         texture.wrapS = THREE.ClampToEdgeWrapping
         texture.wrapT = THREE.ClampToEdgeWrapping
         setLogoTexture(texture)
-        console.log('✅ Logo texture loaded successfully')
       },
       undefined,
       (error) => {
-        console.error('❌ Failed to load logo texture:', error)
+        console.error('Failed to load logo:', error)
       }
     )
   }, [])
