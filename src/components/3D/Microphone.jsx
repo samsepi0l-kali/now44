@@ -8,10 +8,15 @@ export default function Microphone({ scrollProgress = 0, size = 1 }) {
   const [logoTexture, setLogoTexture] = useState(null)
 
   useEffect(() => {
-    // Load the texture manually
+    // Use environment variable for the correct path
+    const baseUrl = import.meta.env.VITE_BASE_URL
+    const logoPath = `${baseUrl}logo.png`
+    
+    console.log('Loading logo from:', logoPath)
+    
     const loader = new THREE.TextureLoader()
     loader.load(
-      '/now44/logo.png',
+      logoPath,
       (texture) => {
         texture.anisotropy = 16
         texture.wrapS = THREE.ClampToEdgeWrapping
@@ -54,29 +59,24 @@ export default function Microphone({ scrollProgress = 0, size = 1 }) {
 
       <Float speed={2} rotationIntensity={0.3} floatIntensity={0.5}>
         <group ref={group} position={[0, 0, 0]}>
-          {/* Handle */}
           <mesh position={[0, -1.1, 0]}>
             <cylinderGeometry args={[0.18, 0.22, 2.5, 64]} />
             <meshPhysicalMaterial color="#0a0a0a" metalness={0.9} roughness={0.35} clearcoat={1} clearcoatRoughness={0.2} />
           </mesh>
 
-          {/* Head */}
           <mesh position={[0, 0.5, 0]}>
             <sphereGeometry args={[0.42, 64, 64]} />
             <meshPhysicalMaterial color="#050505" metalness={1} roughness={0.5} />
           </mesh>
 
-          {/* Mesh Overlay */}
           <mesh position={[0, 0.5, 0]}>
             <sphereGeometry args={[0.425, 32, 32]} />
             <meshStandardMaterial color="#111111" wireframe transparent opacity={0.25} />
           </mesh>
 
-          {/* ID Plate */}
           <RoundedBox args={[1.25, 0.72, 1.25]} radius={0.06} smoothness={4} position={[0, -0.2, 0]}>
             <meshPhysicalMaterial color="#0a0a0a" metalness={0.7} roughness={0.3} clearcoat={1} />
 
-            {/* Only render decals when texture is ready */}
             {logoTexture && (
               <>
                 <Decal position={[0, 0, 0.63]} rotation={[0, 0, 0]} scale={[1.1, 0.55, 0.55]} map={logoTexture} />
