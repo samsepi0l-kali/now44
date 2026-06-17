@@ -3,7 +3,8 @@ import Preloader from './components/Preloader'
 import HeroSection from './components/HeroSection'
 import ScrollSection from './components/ScrollSection'
 import YouTubeSection from './components/YouTubeSection'
-import SpacerSection from './components/SpacerSection'
+import ProfileSection from './components/ProfileSection'
+import FooterSection from './components/FooterSection'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -18,7 +19,8 @@ function App() {
         <HeroSection />
         <ScrollSection />
         <YouTubeSection />
-        <SpacerSection />
+        <ProfileSection />
+        <FooterSection />
       </main>
     </div>
   )
