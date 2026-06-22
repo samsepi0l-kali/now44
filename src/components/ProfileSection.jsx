@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { getAssetPath } from '../utils/paths'  // Add this import
 
 function CountUp({ end, duration = 2 }) {
   const [count, setCount] = useState(0)
@@ -107,7 +108,7 @@ export default function ProfileSection() {
       roleHi: "संस्थापक एवं प्रधान संपादक",
       experience: 24,
       imageAlign: "left",
-      photo: "/alok.png",
+      photo: "alok.png",  // No leading slash
       bio: "A veteran journalist with over two decades of experience in broadcast news, Alok has shaped the editorial direction of leading news networks across India.",
       achievements: [
         "Got appreciation letter from BBC Broadcasting for the special news/article in 2007",
@@ -131,19 +132,19 @@ export default function ProfileSection() {
           company: "Sahara Samay",
           role: "Bureau Chief Amethi",
           years: "2003 - 2005",
-          logo: "/saharasamay.png"
+          logo: "saharasamay.png"  // No leading slash
         },
         {
           company: "Aajtak (TV Today Network Ltd.)",
           role: "Reporter",
           years: "2005 - 2023",
-          logo: "/aajtak.png"
+          logo: "aajtak.png"  // No leading slash
         },
         {
           company: "Times Now Navbharat",
           role: "Reporter",
           years: "2023 - Present",
-          logo: "/timesnownavbharat.png"
+          logo: "timesnownavbharat.png"  // No leading slash
         }
       ]
     },
@@ -154,7 +155,7 @@ export default function ProfileSection() {
       roleHi: "मुख्य कार्यकारी अधिकारी",
       experience: 20,
       imageAlign: "right",
-      photo: "/jagriti.png",
+      photo: "jagriti.png",  // No leading slash
       bio: "A pioneering voice in Indian journalism, Jagriti has led digital transformation initiatives and mentored generations of young reporters.",
       achievements: [
         "Got appreciation letter from Independent News Agency (INA) for organising their News Program.",
@@ -175,7 +176,7 @@ export default function ProfileSection() {
           company: "India TV News",
           role: "Reporter",
           years: "2006 - Present",
-          logo: "/indiatv.png"
+          logo: "indiatv.png"  // No leading slash
         }
       ]
     },
@@ -186,7 +187,7 @@ export default function ProfileSection() {
       roleHi: "सूचना प्रौद्योगिकी",
       experience: 5,
       imageAlign: "left",
-      photo: "/aditya.png",
+      photo: "aditya.png",  // No leading slash
       bio: "An Aerospace Engineering student with a passion for Embedded Hardwares, Web Applications and Cybersecurity.",
       achievements: [
         "4th place in IT Cup Russia by Changellenge in 2025",
@@ -207,7 +208,7 @@ export default function ProfileSection() {
           company: "Eternora Enterprises",
           role: "Programmer & Systems Architect",
           years: "2021 - Present",
-          logo: "/eternora.png"
+          logo: "eternora.png"  // No leading slash
         }
       ]
     }
@@ -246,7 +247,7 @@ export default function ProfileSection() {
                 <div className="relative">
                   <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-sm">
                     <img 
-                      src={profile.photo} 
+                      src={getAssetPath(profile.photo)}  // Using getAssetPath
                       alt={profile.name}
                       className="w-full h-full object-cover"
                       loading="lazy"
@@ -307,7 +308,7 @@ export default function ProfileSection() {
                         {/* Company Logo - Consistent sizing */}
                         <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-1.5 sm:p-2 flex items-center justify-center">
                           <img 
-                            src={job.logo} 
+                            src={getAssetPath(job.logo)}  // Using getAssetPath
                             alt={job.company}
                             className="w-full h-full object-contain"
                             loading="lazy"
