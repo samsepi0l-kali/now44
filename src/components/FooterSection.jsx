@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion'
 import JoinPopup from './JoinForm/JoinPopup'
+import { getAssetPath } from '../utils/paths'  // Add this import
 
 // Stats counter component
 function CountUpStats({ end, duration = 2, label, suffix = '', isMain = false }) {
@@ -45,16 +46,16 @@ export default function FooterSection() {
 
   const bubbleOpacity = useTransform(scrollYProgress, [0, 0.08, 0.85, 1], [0, 0.15, 0.15, 0])
 
-  // Photo grid data with random floating offsets
+  // Photo grid data with random floating offsets - UPDATED with getAssetPath
   const photos = [
-    { id: 1, type: 'portrait', orientation: 'vertical', image: '/photos/photo1.jpg', alt: 'NOW44 Event', float: { x: 0, y: -8 } },
-    { id: 2, type: 'landscape', orientation: 'horizontal', image: '/photos/photo2.jpg', alt: 'NOW44 Coverage', float: { x: 12, y: 5 } },
-    { id: 3, type: 'portrait', orientation: 'vertical', image: '/photos/photo3.jpg', alt: 'NOW44 Team', float: { x: -10, y: 10 } },
-    { id: 4, type: 'landscape', orientation: 'horizontal', image: '/photos/photo4.jpg', alt: 'NOW44 Studio', float: { x: 15, y: -5 } },
-    { id: 5, type: 'portrait', orientation: 'vertical', image: '/photos/photo5.jpg', alt: 'NOW44 Interview', float: { x: -5, y: -12 } },
-    { id: 6, type: 'landscape', orientation: 'horizontal', image: '/photos/photo6.jpg', alt: 'NOW44 Live', float: { x: 8, y: 8 } },
-    { id: 7, type: 'portrait', orientation: 'vertical', image: '/photos/photo7.jpg', alt: 'NOW44 Event', float: { x: -15, y: 3 } },
-    { id: 8, type: 'landscape', orientation: 'horizontal', image: '/photos/photo8.jpg', alt: 'NOW44 Coverage', float: { x: 10, y: -10 } },
+    { id: 1, type: 'portrait', orientation: 'vertical', image: getAssetPath('photos/photo1.jpg'), alt: 'NOW44 Event', float: { x: 0, y: -8 } },
+    { id: 2, type: 'landscape', orientation: 'horizontal', image: getAssetPath('photos/photo2.jpg'), alt: 'NOW44 Coverage', float: { x: 12, y: 5 } },
+    { id: 3, type: 'portrait', orientation: 'vertical', image: getAssetPath('photos/photo3.jpg'), alt: 'NOW44 Team', float: { x: -10, y: 10 } },
+    { id: 4, type: 'landscape', orientation: 'horizontal', image: getAssetPath('photos/photo4.jpg'), alt: 'NOW44 Studio', float: { x: 15, y: -5 } },
+    { id: 5, type: 'portrait', orientation: 'vertical', image: getAssetPath('photos/photo5.jpg'), alt: 'NOW44 Interview', float: { x: -5, y: -12 } },
+    { id: 6, type: 'landscape', orientation: 'horizontal', image: getAssetPath('photos/photo6.jpg'), alt: 'NOW44 Live', float: { x: 8, y: 8 } },
+    { id: 7, type: 'portrait', orientation: 'vertical', image: getAssetPath('photos/photo7.jpg'), alt: 'NOW44 Event', float: { x: -15, y: 3 } },
+    { id: 8, type: 'landscape', orientation: 'horizontal', image: getAssetPath('photos/photo8.jpg'), alt: 'NOW44 Coverage', float: { x: 10, y: -10 } },
   ]
 
   // Stats
@@ -177,9 +178,13 @@ export default function FooterSection() {
                       marginBottom: index % 3 === 1 ? `${(index % 5) * 6}px` : '0px',
                     }}
                   >
-                    <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                      <span className="text-gray-500 text-[8px] sm:text-xs uppercase tracking-wider">Photo</span>
-                    </div>
+                    {/* UPDATED: Image with getAssetPath */}
+                    <img 
+                      src={photo.image}
+                      alt={photo.alt}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                   </motion.div>
                 )

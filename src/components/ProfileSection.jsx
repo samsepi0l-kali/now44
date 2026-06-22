@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { getAssetPath } from '../utils/paths'  // Add this import
+import { getAssetPath } from '../utils/paths'
 
 function CountUp({ end, duration = 2 }) {
   const [count, setCount] = useState(0)
@@ -23,7 +23,6 @@ function CountUp({ end, duration = 2 }) {
   return <span ref={nodeRef}>{count}</span>
 }
 
-// Social Icon Component with brand colors
 function SocialIcon({ type, href }) {
   const getIconColor = () => {
     switch(type) {
@@ -108,7 +107,7 @@ export default function ProfileSection() {
       roleHi: "संस्थापक एवं प्रधान संपादक",
       experience: 24,
       imageAlign: "left",
-      photo: "alok.png",  // No leading slash
+      photo: "alok.png",
       bio: "A veteran journalist with over two decades of experience in broadcast news, Alok has shaped the editorial direction of leading news networks across India.",
       achievements: [
         "Got appreciation letter from BBC Broadcasting for the special news/article in 2007",
@@ -132,19 +131,19 @@ export default function ProfileSection() {
           company: "Sahara Samay",
           role: "Bureau Chief Amethi",
           years: "2003 - 2005",
-          logo: "saharasamay.png"  // No leading slash
+          logo: "saharasamay.png"
         },
         {
           company: "Aajtak (TV Today Network Ltd.)",
           role: "Reporter",
           years: "2005 - 2023",
-          logo: "aajtak.png"  // No leading slash
+          logo: "aajtak.png"
         },
         {
           company: "Times Now Navbharat",
           role: "Reporter",
           years: "2023 - Present",
-          logo: "timesnownavbharat.png"  // No leading slash
+          logo: "timesnownavbharat.png"
         }
       ]
     },
@@ -155,7 +154,7 @@ export default function ProfileSection() {
       roleHi: "मुख्य कार्यकारी अधिकारी",
       experience: 20,
       imageAlign: "right",
-      photo: "jagriti.png",  // No leading slash
+      photo: "jagriti.png",
       bio: "A pioneering voice in Indian journalism, Jagriti has led digital transformation initiatives and mentored generations of young reporters.",
       achievements: [
         "Got appreciation letter from Independent News Agency (INA) for organising their News Program.",
@@ -176,7 +175,7 @@ export default function ProfileSection() {
           company: "India TV News",
           role: "Reporter",
           years: "2006 - Present",
-          logo: "indiatv.png"  // No leading slash
+          logo: "indiatv.png"
         }
       ]
     },
@@ -187,7 +186,7 @@ export default function ProfileSection() {
       roleHi: "सूचना प्रौद्योगिकी",
       experience: 5,
       imageAlign: "left",
-      photo: "aditya.png",  // No leading slash
+      photo: "aditya.png",
       bio: "An Aerospace Engineering student with a passion for Embedded Hardwares, Web Applications and Cybersecurity.",
       achievements: [
         "4th place in IT Cup Russia by Changellenge in 2025",
@@ -208,7 +207,7 @@ export default function ProfileSection() {
           company: "Eternora Enterprises",
           role: "Programmer & Systems Architect",
           years: "2021 - Present",
-          logo: "eternora.png"  // No leading slash
+          logo: "eternora.png"
         }
       ]
     }
@@ -216,10 +215,8 @@ export default function ProfileSection() {
   
   return (
     <section ref={sectionRef} className="relative bg-[#faf9f7] py-12 sm:py-16 md:py-24 lg:py-32 px-4 sm:px-6 md:px-12 overflow-hidden">
-      
       <div className="relative z-10 max-w-7xl mx-auto">
         
-        {/* Section Header - Mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -232,7 +229,6 @@ export default function ProfileSection() {
           <div className="w-12 md:w-16 h-px bg-black/10 mx-auto mt-4 sm:mt-6 md:mt-8" />
         </motion.div>
         
-        {/* Profiles - Mobile-first spacing */}
         <div className="space-y-24 sm:space-y-28 md:space-y-36 lg:space-y-48">
           {profiles.map((profile, idx) => (
             <motion.div
@@ -242,12 +238,11 @@ export default function ProfileSection() {
               transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-center"
             >
-              {/* Image Side - Mobile optimized */}
               <div className={`${profile.imageAlign === 'right' ? 'lg:order-last' : ''} w-full flex justify-center px-4`}>
                 <div className="relative">
                   <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-sm">
                     <img 
-                      src={getAssetPath(profile.photo)}  // Using getAssetPath
+                      src={getAssetPath(profile.photo)}
                       alt={profile.name}
                       className="w-full h-full object-cover"
                       loading="lazy"
@@ -256,9 +251,7 @@ export default function ProfileSection() {
                 </div>
               </div>
               
-              {/* Content Side - Mobile-first typography */}
               <div className="text-center lg:text-left px-4 sm:px-6 lg:px-0">
-                {/* Name - Responsive with better mobile hierarchy */}
                 <div className="space-y-1 sm:space-y-2">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-black break-words">
                     {profile.name}
@@ -266,7 +259,6 @@ export default function ProfileSection() {
                   <p className="text-gray-400 text-xs sm:text-sm">{profile.nameHi}</p>
                 </div>
                 
-                {/* Role - Clear hierarchy on mobile */}
                 <div className="mt-2 sm:mt-3 md:mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2">
                   <span className="text-red-600 text-[11px] sm:text-xs md:text-sm font-medium tracking-wide">
                     {profile.role}
@@ -275,7 +267,6 @@ export default function ProfileSection() {
                   <span className="text-gray-400 text-[11px] sm:text-xs md:text-sm">{profile.roleHi}</span>
                 </div>
                 
-                {/* Experience Badge - Prominent but not overwhelming */}
                 <div className="mt-3 sm:mt-4 md:mt-6 inline-flex items-baseline gap-1">
                   <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-black">
                     <CountUp end={profile.experience} />+
@@ -283,12 +274,10 @@ export default function ProfileSection() {
                   <span className="text-gray-400 text-[9px] sm:text-[10px] md:text-xs tracking-wide uppercase ml-0.5 sm:ml-1">Years</span>
                 </div>
                 
-                {/* Bio - Readable text on mobile */}
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mt-3 sm:mt-4 md:mt-6 border-l-2 border-red-600/20 pl-3 sm:pl-4 text-left">
                   {profile.bio}
                 </p>
                 
-                {/* Social Icons - Larger touch targets */}
                 {Object.keys(profile.socials).length > 0 && (
                   <div className="flex gap-4 sm:gap-5 mt-4 sm:mt-5 md:mt-6 justify-center lg:justify-start">
                     {Object.entries(profile.socials).map(([type, url]) => (
@@ -297,7 +286,6 @@ export default function ProfileSection() {
                   </div>
                 )}
                 
-                {/* Work Experience - Card-like on mobile for better tap targets */}
                 <div className="mt-5 sm:mt-6 md:mt-8 pt-4 sm:pt-5 md:pt-6 border-t border-gray-200">
                   <p className="text-[9px] sm:text-[10px] tracking-[0.2em] text-gray-400 uppercase mb-2 sm:mb-3 md:mb-4 text-left">
                     Experience
@@ -305,17 +293,15 @@ export default function ProfileSection() {
                   <div className="space-y-3 sm:space-y-4">
                     {profile.workExperience.map((job, i) => (
                       <div key={i} className="flex gap-3 sm:gap-4 items-center group">
-                        {/* Company Logo - Consistent sizing */}
                         <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-1.5 sm:p-2 flex items-center justify-center">
                           <img 
-                            src={getAssetPath(job.logo)}  // Using getAssetPath
+                            src={getAssetPath(job.logo)}
                             alt={job.company}
                             className="w-full h-full object-contain"
                             loading="lazy"
                           />
                         </div>
                         
-                        {/* Company Details - Clear hierarchy */}
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-0.5 sm:gap-2">
                             <p className="text-sm sm:text-base font-semibold text-black truncate">{job.company}</p>
@@ -330,7 +316,6 @@ export default function ProfileSection() {
                   </div>
                 </div>
                 
-                {/* Achievements - Fixed: Now left-aligned on mobile */}
                 <div className="mt-5 sm:mt-6 md:mt-8 pt-4 sm:pt-5 md:pt-6 border-t border-gray-200">
                   <p className="text-[9px] sm:text-[10px] tracking-[0.2em] text-gray-400 uppercase mb-2 sm:mb-3 md:mb-4 text-left">
                     Achievements
@@ -345,20 +330,16 @@ export default function ProfileSection() {
                   </ul>
                 </div>
                 
-                {/* Education - With support for primary and secondary degrees */}
                 <div className="mt-4 sm:mt-5 md:mt-6 pt-3 sm:pt-4">
                   <p className="text-[9px] sm:text-[10px] tracking-[0.2em] text-gray-400 uppercase mb-1.5 sm:mb-2 text-left">
                     Education
                   </p>
-                  <div className="space-y-1.5 sm:space-y-2">
-                    {/* Primary Degree */}
+                  <div className="space-y-0.5 sm:space-y-1">
                     <p className="text-[10px] sm:text-xs text-gray-600 text-left break-words leading-relaxed">
                       {typeof profile.education === 'object' ? profile.education.primary : profile.education}
                     </p>
-                    
-                    {/* Secondary Degree (if exists) */}
                     {typeof profile.education === 'object' && profile.education.secondary && (
-                      <p className="text-[10px] sm:text-xs text-gray-500 text-left break-words leading-relaxed pt-0.5 border-t border-gray-100 inline-block">
+                      <p className="text-[10px] sm:text-xs text-gray-600 text-left break-words leading-relaxed">
                         {profile.education.secondary}
                       </p>
                     )}
