@@ -288,7 +288,7 @@ export default function FooterSection() {
             {/* Email & Phone */}
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
               <a
-                href="mailto:amethi.aajtak@gmail.com"
+                href="mailto:contact@now44.in"
                 className="text-gray-500 hover:text-red-500 text-xs sm:text-sm transition-colors duration-300 tracking-wider"
               >
                 amethi.aajtak@gmail.com
