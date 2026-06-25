@@ -291,7 +291,7 @@ export default function FooterSection() {
                 href="mailto:contact@now44.in"
                 className="text-gray-500 hover:text-red-500 text-xs sm:text-sm transition-colors duration-300 tracking-wider"
               >
-                amethi.aajtak@gmail.com
+                contact@now44.in
               </a>
               <span className="text-gray-700 text-xs hidden sm:inline">|</span>
               <a
