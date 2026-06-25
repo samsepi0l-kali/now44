@@ -206,7 +206,7 @@ export default function ProfileSection() {
         {
           company: "Eternora Enterprises",
           role: "Programmer & Systems Architect",
-          years: "2021 - Present",
+          years: "2024 - Present",
           logo: "eternora.png"
         }
       ]
