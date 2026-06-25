@@ -178,38 +178,6 @@ export default function ProfileSection() {
           logo: "indiatv.png"
         }
       ]
-    },
-    {
-      name: "Aditya Srivastava",
-      nameHi: "आदित्य श्रीवास्तव",
-      role: "IT",
-      roleHi: "सूचना प्रौद्योगिकी",
-      experience: 5,
-      imageAlign: "left",
-      photo: "aditya.png",
-      bio: "An Aerospace Engineering student with a passion for Embedded Hardwares, Web Applications and Cybersecurity.",
-      achievements: [
-        "4th place in IT Cup Russia by Changellenge in 2025",
-        "7th place in Web Application Security Challenge by Positive Hack Days in 2025",
-        "3rd place in Robotics Competition in BK Birla Center of Education Pune in 2019"
-      ],
-      education: {
-        primary: "Bachelor in Spacecraft Engineering from Moscow Aviation Institute"
-      },
-      socials: {
-        instagram: "https://www.instagram.com/samsepi0l_07/?__pwa=1",
-        facebook: "https://www.facebook.com/pirates0ftware/",
-        whatsapp: "https://wa.me/+79253165983",
-        github: "https://github.com/samsepi0l-kali"
-      },
-      workExperience: [
-        {
-          company: "Eternora Enterprises",
-          role: "Programmer & Systems Architect",
-          years: "2024 - Present",
-          logo: "eternora.png"
-        }
-      ]
     }
   ]
   
