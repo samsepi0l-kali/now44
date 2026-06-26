@@ -239,7 +239,7 @@ export default function ProfileSection() {
                   <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-black">
                     <CountUp end={profile.experience} />+
                   </span>
-                  <span className="text-gray-400 text-[9px] sm:text-[10px] md:text-xs tracking-wide uppercase ml-0.5 sm:ml-1">Years</span>
+                  <span className="text-gray-400 text-[9px] sm:text-[10px] md:text-xs tracking-wide uppercase ml-0.5 sm:ml-1">Years of Experience</span>
                 </div>
                 
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mt-3 sm:mt-4 md:mt-6 border-l-2 border-red-600/20 pl-3 sm:pl-4 text-left">
