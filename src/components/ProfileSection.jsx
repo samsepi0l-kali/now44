@@ -102,7 +102,7 @@ export default function ProfileSection() {
   const profiles = [
     {
       name: "Alok Srivastava",
-      nameHi: "अलोक श्रीवास्तव",
+      nameHi: "आलोक श्रीवास्तव",
       role: "Founder & Chief Editor",
       roleHi: "संस्थापक एवं प्रधान संपादक",
       experience: 24,
