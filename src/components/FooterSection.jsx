@@ -191,10 +191,6 @@ export default function FooterSection() {
                       <p className="text-white text-xs font-medium tracking-wider">NOW44 HEADQUARTERS</p>
                       <p className="text-gray-400 text-[10px]">Atul Plaza, Amethi</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-                      <span className="text-gray-400 text-[10px]">Live</span>
-                    </div>
                   </div>
                 </div>
               </div>
